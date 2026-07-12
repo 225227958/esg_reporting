@@ -1,0 +1,5 @@
+Company,AI_Sentences,Off_Sentences,AI_Avg_Sent_Len,Off_Avg_Sent_Len,AI_Scope3,Off_Scope3,AI_Materiality,Off_Materiality,AI_TCFD,Off_TCFD,AI_Sentiment,Off_Sentiment
+LVMH,173,1899,21.98,28.23,6,13,0,14,0,0,0.1015,0.1168
+HUGOBOSS,120,16,21.09,62.81,1,1,0,0,0,0,0.1084,0.1367
+EXXONMOBIL,134,1760,19.98,20.18,7,16,0,1,0,0,0.1215,0.1027
+RWE,180,5310,20.33,27.59,0,34,0,31,0,2,0.0887,0.0585
