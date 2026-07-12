@@ -337,3 +337,92 @@ for _, row in llm_df.iterrows():
         f"while the official report emphasized "
         f"'{row['Official_Report_Focus']}'."
     )
+    #Industrial comparison
+   
+print("\n" + "="*80)
+print("INDUSTRY COMPARISON")
+print("="*80)
+
+# Industry groups
+fashion_luxury = llm_df[
+    llm_df["Industry"].isin(["Luxury", "Fashion"])
+]
+
+energy = llm_df[
+    llm_df["Industry"].isin(["Utilities", "Oil & Gas"])
+]
+
+print("\nFASHION & LUXURY INDUSTRY")
+print("-" * 80)
+
+print("Companies:")
+for company in fashion_luxury["Company"]:
+    print(f"- {company}")
+
+print("\nMain ESG Themes:")
+print("- Human rights")
+print("- Responsible sourcing")
+print("- Supply-chain transparency")
+print("- Labour practices")
+print("- Supplier oversight")
+
+print("\nObserved Pattern:")
+print(
+    "The generated reports focused primarily on supply-chain risks, "
+    "human-rights concerns, and sourcing challenges. Official reports "
+    "placed greater emphasis on sustainability programmes, supplier "
+    "standards, and progress towards company targets."
+)
+
+print("\n" + "-" * 80)
+print("ENERGY INDUSTRY")
+print("-" * 80)
+
+print("Companies:")
+for company in energy["Company"]:
+    print(f"- {company}")
+
+print("\nMain ESG Themes:")
+print("- Climate change")
+print("- Greenhouse gas emissions")
+print("- Energy transition")
+print("- Renewable energy investments")
+print("- Fossil-fuel dependence")
+
+print("\nObserved Pattern:")
+print(
+    "The generated reports focused strongly on transition risks, "
+    "climate concerns, and continued reliance on fossil fuels. "
+    "Official reports placed greater emphasis on investments, "
+    "technology, emissions reductions, and progress towards climate goals."
+)
+
+print("\n" + "-" * 80)
+print("CROSS-INDUSTRY FINDINGS")
+print("-" * 80)
+
+print(
+    "A clear industry distinction emerged from the analysis."
+)
+
+print(
+    "\nFashion and luxury companies were primarily evaluated through "
+    "supply-chain management, sourcing practices, and human-rights topics."
+)
+
+print(
+    "\nEnergy companies were primarily evaluated through emissions, "
+    "decarbonization efforts, renewable energy expansion, and climate strategy."
+)
+
+print(
+    "\nAcross both industries, the generated reports tended to focus more "
+    "on risks and challenges, while official reports focused more on "
+    "achievements, targets, and sustainability initiatives."
+)
+
+print(
+    "\nThe findings suggest that the AI workflow was able to identify "
+    "industry-specific ESG priorities rather than applying the same "
+    "assessment approach to all companies."
+)
