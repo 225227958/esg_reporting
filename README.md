@@ -134,3 +134,24 @@ Framing
 The most noticeable difference was how ExxonMobil's transition strategy was presented.
 The official report framed ExxonMobil primarily as a company helping to solve the challenge of providing reliable energy while reducing emissions. Much of the discussion focused on technology, innovation, investment, and future growth opportunities in areas such as CCS, hydrogen, lower-emission fuels, lithium, and advanced materials. The overall narrative emphasized progress and the company's ability to play a role in a lower-emission future.
 The generated report examined the same topics from a broader ESG perspective. While it acknowledged ExxonMobil's emissions reductions and technology investments, it devoted significantly more attention to the limitations of the company's current approach. In particular, the exclusion of Scope 3 emissions from its net-zero ambition, the continued expansion of oil and gas operations, and ongoing climate-related criticism were discussed much more prominently than in the official report.As a result, the two reports often discussed the same facts but attached different levels of importance to them.
+
+# RESULTS
+Classical Text Analysis
+Similarity Analysis
+The cosine similarity analysis revealed varying degrees of alignment between the AI-generated reports and the official sustainability reports.
+          Company          AI Report Length   Official Report Length   Cosine Similarity
+          ExxonMobil       2677               35525                    54.6%
+          LVMH             3802               53604                    49.6%
+          RWE              3660               146496                   33.5%
+          Hugo Boss        2531               1005                     26.6%
+
+ExxonMobil achieved the highest similarity score (54.6%), indicating the strongest textual alignment between the generated and official reports. LVMH also demonstrated relatively high similarity (49.6%). Hugo Boss produced the lowest similarity score (26.6%), suggesting greater differences in report structure, language, and focus.
+A notable observation is that the generated reports were generally much shorter than the official sustainability reports while still capturing many of the key ESG themes. This was particularly evident for RWE, whose official report contained over 146,000 words compared to only 3,660 words in the generated report.
+
+ESG Coverage Analysis
+Environmental Coverage
+         Company      AI Coverage  Official Coverage  
+         ExxonMobil   63.4%        40.3%     
+         RWE          48.3%        12.5%
+         Hugo Boss    44.2%        62.5%
+         LVM          H32.4%       28.9%
