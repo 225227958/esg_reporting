@@ -1,44 +1,50 @@
+
+#Classical text analysis and similarity metrics
 import os
+import pandas as pd
 from pathlib import Path
 from pypdf import PdfReader
+from sklearn.feature_extraction.text import TfidfVectorizer
+from sklearn.metrics.pairwise import cosine_similarity
 
-# Dynamically targets the folder where this script lives
 BASE_DIR = Path(__file__).resolve().parent
-Generated_Dir = BASE_DIR / "reports" / "generated"
-Actual_Dir = BASE_DIR / "reports" / "actual"
-
 companies = ["lvmh", "hugoboss", "exxonmobil", "rwe"]
-corpus = {}
 
-def extract_text_from_pdf(pdf_path):
-    # Ensure compatibility with os.path and pypdf
-    pdf_path_str = str(pdf_path)
-    if not os.path.exists(pdf_path_str):
-        print(f"Warning: File not found at {pdf_path_str}")
-        return ""
-    
+def extract_text(path):
+    """Extracts raw text from a PDF cleanly."""
+    if not path.exists(): return ""
     try:
-        reader = PdfReader(pdf_path_str)
-        text = ""
-        for page in reader.pages:
-            page_text = page.extract_text()
-            if page_text:
-                text += page_text + "\n"
-        return text  
-        
-    except Exception as e:
-        print(f"Error reading {pdf_path_str}: {e}") 
-        return ""  
+        return "\n".join([p.extract_text() for p in PdfReader(str(path)).pages if p.extract_text()])
+    except Exception:
+        return ""
 
-print("STARTING DOCUMENT LOADING PROCESS")
-for comp in companies:
-    ai_file = Generated_Dir / f"{comp}_generated.pdf"
-    off_file = Actual_Dir / f"{comp}_actual.pdf"
+data = {
+    comp: {
+        "ai": extract_text(BASE_DIR / "reports" / "generated" / f"{comp}_generated.pdf"),
+        "official": extract_text(BASE_DIR / "reports" / "actual" / f"{comp}_actual.pdf")
+    } for comp in companies
+}
 
-    corpus[comp] = {
-        "ai": extract_text_from_pdf(ai_file),
-        "official": extract_text_from_pdf(off_file)
-    }
-    print(f"[{comp.upper()}] Loaded successfully.")
-    print(f" --> AI text length: {len(corpus[comp]['ai'])} characters")
-    print(f" --> Official text length: {len(corpus[comp]['official'])} characters")
+metrics = []
+for comp, docs in data.items():
+    if not docs["ai"] or not docs["official"]: continue
+    
+    tfidf = TfidfVectorizer(stop_words='english').fit_transform([docs["ai"], docs["official"]])
+    similarity = cosine_similarity(tfidf[0:1], tfidf[1:2])[0][0]
+    
+    ai_words, off_words = len(docs["ai"].split()), len(docs["official"].split())
+    
+    metrics.append({
+        "Company": comp.upper(),
+        "AI_Word_Count": ai_words,
+        "Official_Word_Count": off_words,
+        "Length_Ratio": round(ai_words / off_words, 4),
+        "Cosine_Similarity": round(similarity, 4)
+    })
+
+df = pd.DataFrame(metrics)
+os.makedirs(BASE_DIR / "results", exist_ok=True)
+df.to_csv(BASE_DIR / "results" / "classical_analysis_summary.csv", index=False)
+
+print("\n--- ANALYSIS COMPLETE ---")
+print(df.to_string(index=False))
