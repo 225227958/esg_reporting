@@ -7,6 +7,8 @@ from pypdf import PdfReader
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.metrics.pairwise import cosine_similarity
 
+print("\n LENGTH AND COVERAGE")
+
 BASE_DIR = Path(__file__).resolve().parent
 companies = ["lvmh", "hugoboss", "exxonmobil", "rwe"]
 
@@ -46,7 +48,6 @@ df = pd.DataFrame(metrics)
 os.makedirs(BASE_DIR / "results", exist_ok=True)
 df.to_csv(BASE_DIR / "results" / "classical_analysis_summary.csv", index=False)
 
-print("\n ANALYSIS COMPLETE ")
 print(df.to_string(index=False))
 
 #Extended Classical Text Analysis
@@ -235,3 +236,104 @@ df_topic_sent = pd.DataFrame(topic_sentiment_metrics)
 df_topic_sent.to_csv(BASE_DIR / "results" / "classical_topic_sentiment.csv", index=False)
 
 print(df_topic_sent.to_string(index=False))
+
+#COMPANIES COMPARISON LLM 
+
+import pandas as pd
+
+llm_data = [
+    {
+        "Company": "LVMH",
+        "Industry": "Luxury",
+        "Main_ESG_Focus": "Biodiversity and Responsible Sourcing",
+        "Generated_Report_Focus": "Supply-chain risks and sourcing challenges",
+        "Official_Report_Focus": "Sustainability initiatives and achievements",
+        "Key_Difference": "Risk-focused vs achievement-focused"
+    },
+    {
+        "Company": "Hugo Boss",
+        "Industry": "Fashion",
+        "Main_ESG_Focus": "Human Rights and Supply Chain",
+        "Generated_Report_Focus": "Labour rights and sourcing controversies",
+        "Official_Report_Focus": "Targets and sustainability programmes",
+        "Key_Difference": "Risk-focused vs target-focused"
+    },
+    {
+        "Company": "RWE",
+        "Industry": "Utilities",
+        "Main_ESG_Focus": "Energy Transition and Decarbonization",
+        "Generated_Report_Focus": "Coal dependence and transition challenges",
+        "Official_Report_Focus": "Renewable growth and climate progress",
+        "Key_Difference": "Transition challenges vs transition achievements"
+    },
+    {
+        "Company": "ExxonMobil",
+        "Industry": "Oil & Gas",
+        "Main_ESG_Focus": "Climate Strategy and Emissions",
+        "Generated_Report_Focus": "Fossil-fuel risks and climate concerns",
+        "Official_Report_Focus": "Technology investments and emissions management",
+        "Key_Difference": "Risk-focused vs strategy-focused"
+    }
+]
+
+llm_df = pd.DataFrame(llm_data)
+
+print(llm_df)
+
+print("\n" + "="*80)
+print("LLM COMPANY COMPARISON")
+print("="*80)
+
+for _, row in llm_df.iterrows():
+    print(f"\n{row['Company']} ({row['Industry']})")
+    print(f"Main ESG Focus: {row['Main_ESG_Focus']}")
+    print(f"Generated Report Focus: {row['Generated_Report_Focus']}")
+    print(f"Official Report Focus: {row['Official_Report_Focus']}")
+    print(f"Key Difference: {row['Key_Difference']}")
+
+    print("\n" + "="*80)
+print("CROSS-COMPANY OBSERVATIONS")
+print("="*80)
+
+# Group 1: Fashion & Luxury
+fashion_luxury = llm_df[
+    llm_df["Industry"].isin(["Luxury", "Fashion"])
+]
+
+# Group 2: Energy
+energy = llm_df[
+    llm_df["Industry"].isin(["Utilities", "Oil & Gas"])
+]
+
+print("\nFashion & Luxury Companies:")
+for company in fashion_luxury["Company"]:
+    print(f"- {company}")
+
+print("\nCommon Themes:")
+print("- Strong focus on supply chains")
+print("- Human rights and responsible sourcing")
+print("- Transparency of suppliers and materials")
+print("- ESG risks connected to global production networks")
+
+
+print("\nEnergy Companies:")
+for company in energy["Company"]:
+    print(f"- {company}")
+
+print("\nCommon Themes:")
+print("- Climate change and emissions")
+print("- Energy transition strategies")
+print("- Dependence on fossil fuels")
+print("- Renewable energy investments")
+print("- Climate-related risks and litigation")
+print("\n" + "="*80)
+print("GENERATED VS OFFICIAL REPORTS")
+print("="*80)
+
+for _, row in llm_df.iterrows():
+    print(
+        f"\n{row['Company']}: "
+        f"The generated report focused on '{row['Generated_Report_Focus']}' "
+        f"while the official report emphasized "
+        f"'{row['Official_Report_Focus']}'."
+    )
