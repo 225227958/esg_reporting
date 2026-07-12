@@ -139,43 +139,17 @@ The generated report examined the same topics from a broader ESG perspective. Wh
 Classical Text Analysis
 Similarity Analysis
 The cosine similarity analysis revealed varying degrees of alignment between the AI-generated reports and the official sustainability reports.
-          Company      -->    AI Report Length -->   Official Report Length  -->  Cosine Similarity
-          ExxonMobil   -->     2677     -->           35525       -->              54.6%
-          LVMH      -->        3802       -->         53604      -->               49.6%
-          RWE     -->          3660          -->      146496    -->                33.5%
-          Hugo Boss     -->    2531       -->         1005           -->           26.6%
-
 ExxonMobil achieved the highest similarity score (54.6%), indicating the strongest textual alignment between the generated and official reports. LVMH also demonstrated relatively high similarity (49.6%). Hugo Boss produced the lowest similarity score (26.6%), suggesting greater differences in report structure, language, and focus.
 A notable observation is that the generated reports were generally much shorter than the official sustainability reports while still capturing many of the key ESG themes. This was particularly evident for RWE, whose official report contained over 146,000 words compared to only 3,660 words in the generated report.
 
 ESG Coverage Analysis
 Environmental Coverage
-         Company      AI Coverage  Official Coverage  
-         ExxonMobil   63.4%        40.3%     
-         RWE          48.3%        12.5%
-         Hugo Boss    44.2%        62.5%
-         LVMH          32.4%       28.9%
-Environmental topics occupied a larger portion of the generated reports for ExxonMobil and RWE than in the official reports. This suggests that the AI considered climate change, emissions management, and environmental challenges particularly important for energy companies. Hugo Boss showed the opposite pattern, with environmental coverage being substantially higher in the official report.
+Environmental topics occupied a larger portion of the generated reports for ExxonMobil 63.4% in generated report and 40.3% in the official report and RWE 48.3% and 12.5% respectively. This suggests that the AI considered climate change, emissions management, and environmental challenges particularly important for energy companies. Hugo Boss showed the opposite pattern, with environmental coverage being substantially higher in the official report.
 Social Coverage
-         Company      AI Coverage  Official Coverage  
-         ExxonMobil   32.5%        25%     
-         RWE          23.3%        7.8%
-         Hugo Boss    21.1%        3.4%
-         LVMH         21.2%        17.2%
-The generated reports generally devoted more attention to social topics than the official reports. Human rights, labour conditions, employee welfare, and community impacts appeared more frequently in the AI-generated assessments.
+The generated reports generally devoted more attention to social topics than the official reports. Human rights, labour conditions, employee welfare, and community impacts appeared more frequently in the AI-generated assessments. The biggest gapwas for Hugo Boss 21.1% in the generated report and 3.4% in the official one and RWE with  23.3% and 7.8% respectively. The smallest gap was for LVMH with only a 4% change in coverage.
 Governance Coverage
-        Company       AI Coverage   Official Coverage
-        Hugo Boss     25.8%         31.3%
-        RWE           21.1%         14.3%
-        ExxonMobil    20.9%         6.4%
-        LVMH          17.2%         7.2%
-Governance coverage was relatively balanced across most companies. However, the generated reports allocated considerably more attention to governance issues for ExxonMobil and LVMH than the official reports.
+Governance coverage was relatively balanced across most companies. However, the generated reports allocated considerably more attention to governance issues for ExxonMobil 20.9% in generated report and 6.4% in official one and LVMH 17.2% generated report 7.2% in official report. For Hugo Boss the coverage regarding governance was higher in the actual report. 
 Sentiment Analysis
-         Company      AI Sentiment  Official Sentiment
-         ExxonMobil   0.1215        0.1027
-         Hugo Boss    0.1084        0.1367
-         LVMH         0.1015        0.1168
-         RWE          0.0887        0.0585
 The sentiment analysis showed that the generated reports were not consistently more critical than the official reports. ExxonMobil and RWE received slightly more positive sentiment scores in the generated reports, while Hugo Boss and LVMH received slightly more positive sentiment scores in the official reports. This suggests that differences between generated and official reports were driven more by topic focus than by overall tone.
 # Company Comparison
 The comparison between companies shows that the AI-generated reports successfully identified company-specific ESG priorities rather than applying the same assessment framework to every organization.
