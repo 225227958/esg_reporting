@@ -130,3 +130,36 @@ df_jaccard = pd.DataFrame(jaccard_metrics)
 df_jaccard.to_csv(BASE_DIR / "results" / "classical_jaccard.csv", index=False)
 
 print(df_jaccard.to_string(index=False))
+
+#Keyword Overlap
+from sklearn.feature_extraction.text import CountVectorizer
+
+print("\n--- RUNNING TASK 2.4: KEYWORD OVERLAP ---")
+
+overlap_metrics = []
+
+for comp, docs in data.items():
+    if not docs["ai"] or not docs["official"]: continue
+    
+    ai_low = docs["ai"].lower()
+    off_low = docs["official"].lower()
+    
+    cv = CountVectorizer(stop_words='english', max_features=50)
+    try:
+        cv.fit([docs["ai"], docs["official"]])
+        words = cv.get_feature_names_out()
+        
+        shared = [w for w in words if w in ai_low and w in off_low][:5]
+        overlap_str = ", ".join(shared)
+    except Exception:
+        overlap_str = "None"
+        
+    overlap_metrics.append({
+        "Company": comp.upper(),
+        "Top_Overlapping_Keywords": overlap_str
+    })
+
+df_overlap = pd.DataFrame(overlap_metrics)
+df_overlap.to_csv(BASE_DIR / "results" / "classical_keyword_overlap.csv", index=False)
+
+print(df_overlap.to_string(index=False))
