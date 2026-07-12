@@ -136,20 +136,20 @@ The official report framed ExxonMobil primarily as a company helping to solve th
 The generated report examined the same topics from a broader ESG perspective. While it acknowledged ExxonMobil's emissions reductions and technology investments, it devoted significantly more attention to the limitations of the company's current approach. In particular, the exclusion of Scope 3 emissions from its net-zero ambition, the continued expansion of oil and gas operations, and ongoing climate-related criticism were discussed much more prominently than in the official report.As a result, the two reports often discussed the same facts but attached different levels of importance to them.
 
 # RESULTS
-Classical Text Analysis
-Similarity Analysis
+# Classical Text Analysis
+# Similarity Analysis
 The cosine similarity analysis revealed varying degrees of alignment between the AI-generated reports and the official sustainability reports.
 ExxonMobil achieved the highest similarity score (54.6%), indicating the strongest textual alignment between the generated and official reports. LVMH also demonstrated relatively high similarity (49.6%). Hugo Boss produced the lowest similarity score (26.6%), suggesting greater differences in report structure, language, and focus.
 A notable observation is that the generated reports were generally much shorter than the official sustainability reports while still capturing many of the key ESG themes. This was particularly evident for RWE, whose official report contained over 146,000 words compared to only 3,660 words in the generated report.
 
-ESG Coverage Analysis
-Environmental Coverage
+# ESG Coverage Analysis
+# Environmental Coverage
 Environmental topics occupied a larger portion of the generated reports for ExxonMobil 63.4% in generated report and 40.3% in the official report and RWE 48.3% and 12.5% respectively. This suggests that the AI considered climate change, emissions management, and environmental challenges particularly important for energy companies. Hugo Boss showed the opposite pattern, with environmental coverage being substantially higher in the official report.
-Social Coverage
+# Social Coverage
 The generated reports generally devoted more attention to social topics than the official reports. Human rights, labour conditions, employee welfare, and community impacts appeared more frequently in the AI-generated assessments. The biggest gapwas for Hugo Boss 21.1% in the generated report and 3.4% in the official one and RWE with  23.3% and 7.8% respectively. The smallest gap was for LVMH with only a 4% change in coverage.
-Governance Coverage
+# Governance Coverage
 Governance coverage was relatively balanced across most companies. However, the generated reports allocated considerably more attention to governance issues for ExxonMobil 20.9% in generated report and 6.4% in official one and LVMH 17.2% generated report 7.2% in official report. For Hugo Boss the coverage regarding governance was higher in the actual report. 
-Sentiment Analysis
+# Sentiment Analysis
 The sentiment analysis showed that the generated reports were not consistently more critical than the official reports. ExxonMobil and RWE received slightly more positive sentiment scores in the generated reports, while Hugo Boss and LVMH received slightly more positive sentiment scores in the official reports. This suggests that differences between generated and official reports were driven more by topic focus than by overall tone.
 # Company Comparison
 The comparison between companies shows that the AI-generated reports successfully identified company-specific ESG priorities rather than applying the same assessment framework to every organization.
@@ -169,9 +169,9 @@ The generated reports consistently highlighted supply-chain risks and implementa
 
 Energy Industry
 Companies: RWE, ExxonMobil
-The dominant ESG themes were: Climate change, Greenhouse gas emissions, Energy transition, Renewable energy, Fossil-fuel dependence
-The generated reports focused significantly on transition risks, climate-related criticism, and the ongoing reliance on fossil fuels. In comparison, the official reports emphasized investment strategies, technological innovation, and progress towards long-term climate objectives.
-Cross-Industry Findings
-A clear industry distinction emerged during the analysis.
+# The dominant ESG themes were: Climate change, Greenhouse gas emissions, Energy transition, Renewable energy, Fossil-fuel dependence
+# The generated reports focused significantly on transition risks, climate-related criticism, and the ongoing reliance on fossil fuels. In comparison, the official reports emphasized investment strategies, technological innovation, and progress towards long-term climate objectives.
+# Cross-Industry Findings
+# A clear industry distinction emerged during the analysis.
 For fashion and luxury companies, ESG assessments were largely driven by supply-chain sustainability, human rights, and sourcing practices. For energy companies, ESG assessments focused predominantly on climate performance, emissions management, and decarbonization strategies.
 These findings suggest that the AI-generated reporting workflow was able to identify the most material ESG topics for each industry rather than applying a uniform ESG framework across all companies. The generated reports consistently captured industry-specific sustainability challenges while providing a slightly more risk-oriented perspective than the official sustainability reports.
