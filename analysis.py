@@ -163,3 +163,43 @@ df_overlap = pd.DataFrame(overlap_metrics)
 df_overlap.to_csv(BASE_DIR / "results" / "classical_keyword_overlap.csv", index=False)
 
 print(df_overlap.to_string(index=False))
+
+#ESG Topic Coverage
+print("\n STRUCTURAL ESG TOPIC COVERAGE ")
+
+coverage_density_metrics = []
+
+esg_themes = {
+    "Environmental": ["carbon", "emission", "climate", "energy", "environmental", "sustainability"],
+    "Social": ["employee", "diversity", "safety", "social", "human", "community", "labor"],
+    "Governance": ["board", "governance", "compliance", "ethics", "audit", "shareholder", "policy"]
+}
+
+for comp, docs in data.items():
+    if not docs["ai"] or not docs["official"]: continue
+    
+    ai_sents = nltk.sent_tokenize(docs["ai"])
+    off_sents = nltk.sent_tokenize(docs["official"])
+    
+    ai_total = len(ai_sents)
+    off_total = len(off_sents)
+    
+    def calc_density(sentences, keywords, total_count):
+        if total_count == 0: return 0.0
+        matching_sents = sum(1 for s in sentences if any(k in s.lower() for k in keywords))
+        return round((matching_sents / total_count) * 100, 2)
+
+    coverage_density_metrics.append({
+        "Company": comp.upper(),
+        "AI_Env_Coverage_%": calc_density(ai_sents, esg_themes["Environmental"], ai_total),
+        "Off_Env_Coverage_%": calc_density(off_sents, esg_themes["Environmental"], off_total),
+        "AI_Soc_Coverage_%": calc_density(ai_sents, esg_themes["Social"], ai_total),
+        "Off_Soc_Coverage_%": calc_density(off_sents, esg_themes["Social"], off_total),
+        "AI_Gov_Coverage_%": calc_density(ai_sents, esg_themes["Governance"], ai_total),
+        "Off_Gov_Coverage_%": calc_density(off_sents, esg_themes["Governance"], off_total),
+    })
+
+df_density = pd.DataFrame(coverage_density_metrics)
+df_density.to_csv(BASE_DIR / "results" / "classical_esg_structural_coverage.csv", index=False)
+
+print(df_density.to_string(index=False))
