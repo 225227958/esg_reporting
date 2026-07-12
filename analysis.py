@@ -104,3 +104,29 @@ df_extended.to_csv(BASE_DIR / "results" / "classical_extended_analysis.csv", ind
 
 print("\n ADDITIONAL METRICS TABLE ")
 print(df_extended.to_string(index=False))
+
+#Jaccard Similarity
+
+print("\n JACCARD SIMILARITY ")
+
+jaccard_metrics = []
+
+for comp, docs in data.items():
+    if not docs["ai"] or not docs["official"]: continue
+    
+    ai_set = set(docs["ai"].lower().split())
+    off_set = set(docs["official"].lower().split())
+    
+    intersection = len(ai_set.intersection(off_set))
+    union = len(ai_set.union(off_set))
+    jaccard_sim = round(intersection / union, 4) if union > 0 else 0
+    
+    jaccard_metrics.append({
+        "Company": comp.upper(),
+        "Jaccard_Similarity": jaccard_sim
+    })
+
+df_jaccard = pd.DataFrame(jaccard_metrics)
+df_jaccard.to_csv(BASE_DIR / "results" / "classical_jaccard.csv", index=False)
+
+print(df_jaccard.to_string(index=False))
