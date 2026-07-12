@@ -46,7 +46,7 @@ df = pd.DataFrame(metrics)
 os.makedirs(BASE_DIR / "results", exist_ok=True)
 df.to_csv(BASE_DIR / "results" / "classical_analysis_summary.csv", index=False)
 
-print("\n--- ANALYSIS COMPLETE ---")
+print("\n ANALYSIS COMPLETE ")
 print(df.to_string(index=False))
 
 #Extended Classical Text Analysis
@@ -134,7 +134,7 @@ print(df_jaccard.to_string(index=False))
 #Keyword Overlap
 from sklearn.feature_extraction.text import CountVectorizer
 
-print("\n--- RUNNING TASK 2.4: KEYWORD OVERLAP ---")
+print("\n KEYWORD OVERLAP ")
 
 overlap_metrics = []
 
@@ -203,3 +203,35 @@ df_density = pd.DataFrame(coverage_density_metrics)
 df_density.to_csv(BASE_DIR / "results" / "classical_esg_structural_coverage.csv", index=False)
 
 print(df_density.to_string(index=False))
+
+#Topic Specific Sentiment Analysis
+
+print("\n TOPIC-SPECIFIC SENTIMENT ANALYSIS ")
+
+topic_sentiment_metrics = []
+
+for comp, docs in data.items():
+    if not docs["ai"] or not docs["official"]: continue
+    
+    ai_sents = nltk.sent_tokenize(docs["ai"])
+    off_sents = nltk.sent_tokenize(docs["official"])
+    
+    def get_theme_sentiment(sentences, keywords):
+        matching_text = " ".join([s for s in sentences if any(k in s.lower() for k in keywords)])
+        if not matching_text.strip(): return 0.0
+        return round(TextBlob(matching_text).sentiment.polarity, 4)
+        
+    topic_sentiment_metrics.append({
+        "Company": comp.upper(),
+        "AI_Env_Sent": get_theme_sentiment(ai_sents, esg_themes["Environmental"]),
+        "Off_Env_Sent": get_theme_sentiment(off_sents, esg_themes["Environmental"]),
+        "AI_Soc_Sent": get_theme_sentiment(ai_sents, esg_themes["Social"]),
+        "Off_Soc_Sent": get_theme_sentiment(off_sents, esg_themes["Social"]),
+        "AI_Gov_Sent": get_theme_sentiment(ai_sents, esg_themes["Governance"]),
+        "Off_Gov_Sent": get_theme_sentiment(off_sents, esg_themes["Governance"])
+    })
+
+df_topic_sent = pd.DataFrame(topic_sentiment_metrics)
+df_topic_sent.to_csv(BASE_DIR / "results" / "classical_topic_sentiment.csv", index=False)
+
+print(df_topic_sent.to_string(index=False))
