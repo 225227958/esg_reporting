@@ -139,11 +139,11 @@ The generated report examined the same topics from a broader ESG perspective. Wh
 Classical Text Analysis
 Similarity Analysis
 The cosine similarity analysis revealed varying degrees of alignment between the AI-generated reports and the official sustainability reports.
-          Company          AI Report Length   Official Report Length   Cosine Similarity
-          ExxonMobil       2677               35525                    54.6%
-          LVMH             3802               53604                    49.6%
-          RWE              3660               146496                   33.5%
-          Hugo Boss        2531               1005                     26.6%
+          Company      -->    AI Report Length -->   Official Report Length  -->  Cosine Similarity
+          ExxonMobil   -->     2677     -->           35525       -->              54.6%
+          LVMH      -->        3802       -->         53604      -->               49.6%
+          RWE     -->          3660          -->      146496    -->                33.5%
+          Hugo Boss     -->    2531       -->         1005           -->           26.6%
 
 ExxonMobil achieved the highest similarity score (54.6%), indicating the strongest textual alignment between the generated and official reports. LVMH also demonstrated relatively high similarity (49.6%). Hugo Boss produced the lowest similarity score (26.6%), suggesting greater differences in report structure, language, and focus.
 A notable observation is that the generated reports were generally much shorter than the official sustainability reports while still capturing many of the key ESG themes. This was particularly evident for RWE, whose official report contained over 146,000 words compared to only 3,660 words in the generated report.
