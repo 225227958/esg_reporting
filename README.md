@@ -169,9 +169,9 @@ The generated reports consistently highlighted supply-chain risks and implementa
 
 Energy Industry
 Companies: RWE, ExxonMobil
-# The dominant ESG themes were: Climate change, Greenhouse gas emissions, Energy transition, Renewable energy, Fossil-fuel dependence
-# The generated reports focused significantly on transition risks, climate-related criticism, and the ongoing reliance on fossil fuels. In comparison, the official reports emphasized investment strategies, technological innovation, and progress towards long-term climate objectives.
+The dominant ESG themes were: Climate change, Greenhouse gas emissions, Energy transition, Renewable energy, Fossil-fuel dependence
+The generated reports focused significantly on transition risks, climate-related criticism, and the ongoing reliance on fossil fuels. In comparison, the official reports emphasized investment strategies, technological innovation, and progress towards long-term climate objectives.
 # Cross-Industry Findings
-# A clear industry distinction emerged during the analysis.
+A clear industry distinction emerged during the analysis.
 For fashion and luxury companies, ESG assessments were largely driven by supply-chain sustainability, human rights, and sourcing practices. For energy companies, ESG assessments focused predominantly on climate performance, emissions management, and decarbonization strategies.
 These findings suggest that the AI-generated reporting workflow was able to identify the most material ESG topics for each industry rather than applying a uniform ESG framework across all companies. The generated reports consistently captured industry-specific sustainability challenges while providing a slightly more risk-oriented perspective than the official sustainability reports.
