@@ -45,8 +45,22 @@ for comp, docs in data.items():
     })
 
 df = pd.DataFrame(metrics)
+
+df["Cosine_Similarity"] = (df["Cosine_Similarity"] * 100).round(1)
+
+df.rename(columns={
+    "AI_Word_Count": "AI Words",
+    "Official_Word_Count": "Official Words",
+    "Length_Ratio": "Length Ratio",
+    "Cosine_Similarity": "Cosine Similarity (%)"
+}, inplace=True)
+
 os.makedirs(BASE_DIR / "results", exist_ok=True)
-df.to_csv(BASE_DIR / "results" / "classical_analysis_summary.csv", index=False)
+
+df.to_csv(
+    BASE_DIR / "results" / "classical_analysis_summary.csv",
+    index=False
+)
 
 print(df.to_string(index=False))
 
@@ -426,3 +440,4 @@ print(
     "industry-specific ESG priorities rather than applying the same "
     "assessment approach to all companies."
 )
+
